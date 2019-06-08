@@ -20,5 +20,8 @@ Route::prefix('api')->group(function () {
         Route::put('/product/{id}', 'ProductController@update');
         Route::delete('/product/{id}', 'ProductController@destroy');
         Route::post('/product', 'ProductController@store');
+        Route::resource('/project', 'ProjectController');
+        Route::resource('/team', 'TeamController');
+        Route::resource('/user', 'UserController');
     });
 });
