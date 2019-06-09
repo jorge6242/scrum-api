@@ -6,7 +6,7 @@ use App\Project;
 
 class ProjectRepository  {
   
-    protected $post;
+    protected $project;
 
     public function __construct(Project $project) {
       $this->project = $project;
@@ -30,5 +30,14 @@ class ProjectRepository  {
 
     public function delete($id) {
      return $this->project->find($id)->delete();
+    }
+
+    public function checkProject($name)
+    {
+      $project = $this->project->where('name', $name)->first();
+      if ($project) {
+        return true;
+      }
+      return false; 
     }
 }

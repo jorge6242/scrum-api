@@ -34,6 +34,12 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         $projectRequest = $request->all();
+        if ($this->projectService->checkProject($projectRequest['name'])) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Project already exist'
+            ])->setStatusCode(400);
+        }
         $project = $this->projectService->create($projectRequest);
         if ($project) {
             return response()->json([

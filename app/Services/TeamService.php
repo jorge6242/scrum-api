@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
-use App\Repositories\TeamRepository;
 use Illuminate\Http\Request;
+use App\Repositories\TeamRepository;
 
 class TeamService {
 
@@ -19,6 +19,15 @@ class TeamService {
 		return $this->team->create($request);
 	}
 
+	public function createUserTeam($request) {
+		list($team, $users) = [$request['team'], $request['users']];
+		foreach ($users as $key => $user) {
+				$attr = ['team_id' => $team, 'user_id' => $user['id']];
+				$this->team->createUserTeam($attr);
+		}
+		return true;
+	}
+
 	public function update($request, $id) {
       return $this->team->update($id, $request);
 	}
@@ -29,5 +38,9 @@ class TeamService {
 
 	public function delete($id) {
       return $this->team->delete($id);
+	}
+
+	public function checkTeam($id) {
+		return $this->team->checkTeam($id);
 	}
 }

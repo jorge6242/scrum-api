@@ -34,7 +34,31 @@ class TeamController extends Controller
     public function store(Request $request)
     {
         $teamRequest = $request->all();
+        if ($this->teamService->checkTeam($teamRequest['name'])) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Team already exist'
+            ])->setStatusCode(400);
+        }      
         $team = $this->teamService->create($teamRequest);
+        if ($team) {
+            return response()->json([
+                'success' => true,
+                'data' => $team
+            ]);
+        }
+    }
+
+        /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function createUserTeam(Request $request)
+    {
+        $teamRequest = $request->all();
+        $team = $this->teamService->createUserTeam($teamRequest);
         if ($team) {
             return response()->json([
                 'success' => true,

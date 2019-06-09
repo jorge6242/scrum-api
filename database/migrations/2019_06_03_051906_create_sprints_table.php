@@ -21,7 +21,7 @@ class CreateSprintsTable extends Migration
             $table->bigInteger('availables_days');
             $table->date('start_date');
             $table->date('end_date');
-            $table->bigInteger('projects_id');
+            $table->bigInteger('project_id');
             $table->timestamps();
         });
     }

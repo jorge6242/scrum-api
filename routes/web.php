@@ -22,6 +22,9 @@ Route::prefix('api')->group(function () {
         Route::post('/product', 'ProductController@store');
         Route::resource('/project', 'ProjectController');
         Route::resource('/team', 'TeamController');
+        Route::post('/users-team', 'TeamController@createUserTeam');
         Route::resource('/user', 'UserController');
+        Route::resource('/backlog', 'BacklogController');
+        Route::resource('/sprint', 'SprintController');
     });
 });

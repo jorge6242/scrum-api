@@ -3,14 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Services\UserService;
+use App\Services\SprintService;
 
-class UserController extends Controller
+class SprintController extends Controller
 {
-    public function __construct(UserService $userService)
-	{
-		$this->userService = $userService;
-    }
+    public function __construct(SprintService $sprintService) {
+		$this->sprintService = $sprintService ;
+	}
     /**
      * Display a listing of the resource.
      *
@@ -18,10 +17,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = $this->userService->index();
+        $sprint = $this->sprintService->index();
         return response()->json([
             'success' => true,
-            'data' => $user
+            'data' => $sprint
         ]);
     }
 
@@ -33,19 +32,19 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $userRequest = $request->all();
-        if ($this->userService->checkUser($request['email'])) {
+        $sprintRequest = $request->all();
+        if ($this->sprintService->checkSprint($sprintRequest['name'])) {
             return response()->json([
                 'success' => false,
-                'message' => 'User already exist'
+                'message' => 'Sprint already exist'
             ])->setStatusCode(400);
         }
-        $user = $this->userService->create($userRequest);
-        if ($user) {
+        $sprint = $this->sprintService->create($sprintRequest);
+        if ($sprint) {
             return response()->json([
                 'success' => true,
-                'data' => $user
-            ])->setStatusCode(200);
+                'data' => $sprint
+            ]);
         }
     }
 
@@ -57,13 +56,18 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = $this->userService->read($id);
-        if($user) {
-            return response()->json([
-                'success' => true,
-                'data' => $user
-            ]);
-        }
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
     }
 
     /**
@@ -75,14 +79,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $userRequest = $request->all();
-        $user = $this->userService->update($userRequest, $id);
-        if($user) {
-            return response()->json([
-                'success' => true,
-                'data' => $user
-            ]);
-        }
+        //
     }
 
     /**
@@ -93,12 +90,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = $this->userService->delete($id);
-        if($user) {
-            return response()->json([
-                'success' => true,
-                'data' => $user
-            ]);
-        }
+        //
     }
 }

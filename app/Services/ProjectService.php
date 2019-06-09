@@ -30,4 +30,8 @@ class ProjectService {
 	public function delete($id) {
       return $this->project->delete($id);
 	}
+
+	public function checkProject($name) {
+		return $this->project->checkProject($name);
+	}
 }

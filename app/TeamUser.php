@@ -14,7 +14,7 @@ class TeamUser extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function teams()
+    public function team()
     {
         return $this->belongsTo('App\Team', 'team_id', 'id');
     }
@@ -22,7 +22,7 @@ class TeamUser extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function users()
+    public function user()
     {
         return $this->belongsTo('App\User', 'user_id', 'id');
     }
