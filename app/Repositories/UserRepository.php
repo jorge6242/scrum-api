@@ -26,8 +26,12 @@ class UserRepository  {
     public function update($id, array $attributes) {
       return $this->user->find($id)->update($attributes);
     }
-  
+
     public function all() {
+      return $this->user->all();
+    }
+  
+    public function availableToTeam() {
       $arrayUsers = array();
       $users = $this->user->all();
       foreach ($users as $key => $user) {

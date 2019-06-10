@@ -15,6 +15,10 @@ class UserService {
 			return $this->user->all();
 		}
 
+		public function availableToTeam() {
+			return $this->user->availableToTeam();
+		}
+
 		public function create($request) {
 			$request['password'] = bcrypt($request['password']);
 			return $this->user->create($request);

@@ -32,7 +32,7 @@ class BacklogRepository  {
      return $this->backlog->find($id)->delete();
     }
 
-    public function checkbacklog($name)
+    public function checkBacklog($name)
     {
       $backlog = $this->backlog->where('name', $name)->first();
       if ($backlog) {

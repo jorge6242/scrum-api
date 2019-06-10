@@ -24,6 +24,7 @@ Route::prefix('api')->group(function () {
         Route::resource('/team', 'TeamController');
         Route::post('/users-team', 'TeamController@createUserTeam');
         Route::resource('/user', 'UserController');
+        Route::get('/users-available', 'UserController@availableToTeam');
         Route::resource('/backlog', 'BacklogController');
         Route::resource('/sprint', 'SprintController');
     });
