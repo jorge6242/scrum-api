@@ -25,6 +25,20 @@ class BacklogController extends Controller
         ]);
     }
 
+        /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getMainBacklog()
+    {
+        $backlog = $this->backlogService->getMainBacklog();
+        return response()->json([
+            'success' => true,
+            'data' => $backlog
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

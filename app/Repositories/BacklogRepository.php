@@ -28,6 +28,10 @@ class BacklogRepository  {
       return $this->backlog->all();
     }
 
+    public function getMainBacklog() {
+      return  $backlog = $this->backlog->where('type',1)->get();
+    }
+
     public function delete($id) {
      return $this->backlog->find($id)->delete();
     }

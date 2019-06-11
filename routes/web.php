@@ -26,6 +26,7 @@ Route::prefix('api')->group(function () {
         Route::resource('/user', 'UserController');
         Route::get('/users-available', 'UserController@availableToTeam');
         Route::resource('/backlog', 'BacklogController');
+        Route::get('/main-backlog', 'BacklogController@getMainBacklog');
         Route::resource('/sprint', 'SprintController');
     });
 });

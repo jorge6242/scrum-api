@@ -15,6 +15,10 @@ class BacklogService {
 		return $this->backlog->all();
 	}
 
+	public function getMainBacklog() {
+		return $this->backlog->getMainBacklog();
+	}
+
 	public function create($request) {
 		return $this->backlog->create($request);
 	}
