@@ -19,6 +19,11 @@ class BacklogService {
 		return $this->backlog->getMainBacklog();
 	}
 
+	public function getBacklogsSprint($project) {
+		return $this->backlog->getBacklogsSprint($project);
+	}
+
+
 	public function create($request) {
 		return $this->backlog->create($request);
 	}

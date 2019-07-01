@@ -25,7 +25,7 @@ class SprintRepository  {
     }
   
     public function all() {
-      return $this->sprint->all();
+      return $this->sprint->with(['project'])->get();
     }
 
     public function delete($id) {

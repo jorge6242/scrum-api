@@ -19,7 +19,7 @@ class Sprint extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function projects()
+    public function project()
     {
         return $this->belongsTo('App\Project', 'project_id', 'id');
     }

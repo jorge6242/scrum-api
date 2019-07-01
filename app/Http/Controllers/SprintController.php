@@ -56,7 +56,13 @@ class SprintController extends Controller
      */
     public function show($id)
     {
-        //
+        $sprint = $this->sprintService->read($id);
+        if($sprint) {
+            return response()->json([
+                'success' => true,
+                'data' => $sprint
+            ]);
+        }
     }
 
     /**
