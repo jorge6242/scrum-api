@@ -27,16 +27,20 @@ class BacklogRepository  {
     }
   
     public function all() {
-      return $this->backlog->all();
+      return $this->backlog->where('type',1)->get();
     }
 
     public function getMainBacklog() {
       return  $backlog = $this->backlog->where('type',1)->get();
     }
+    
+    public function getBacklogsFromSprint($sprint) {
+      return  $backlog = $this->backlog->where('sprint_id',$sprint)->where('type', 1)->get();
+    }
 
     public function getBacklogsSprint($project) {
       $sprint = $this->sprint->where('project_id',$project)->where('status', 2)->first();
-      $backlogs = $this->backlog->where('project_id',$project)->where('sprint_id',$sprint['id'])->where('type', 1)->get();
+      $backlogs = $this->backlog->where('project_id',$project)->where('sprint_id',$sprint['id'])->where('type', 1)->with(['sprint'])->get();
       foreach ($backlogs as $key => $backlog) {
         $tasks = $this->backlog->where('project_id',$project)->where('type',2)->where('assoc_backlog',$backlog['id'])->where('sprint_id',$sprint['id'])->get();
         if ($tasks) {
@@ -48,6 +52,14 @@ class BacklogRepository  {
 
     public function delete($id) {
      return $this->backlog->find($id)->delete();
+    }
+
+    public function checkTasksFromSprint($request) {
+     $backlog = $this->backlog->where('project_id',$request->query('project'))->where('sprint_id',$request->query('sprint'))->where('type', 2)->where('status','<', 3)->get();
+      if(count($backlog) > 0) {
+        return false;
+      }
+      return true;
     }
 
     public function checkBacklog($name)

@@ -23,6 +23,10 @@ class BacklogService {
 		return $this->backlog->getBacklogsSprint($project);
 	}
 
+	public function getBacklogsFromSprint($sprint) {
+		return $this->backlog->getBacklogsFromSprint($sprint);
+	}
+
 
 	public function create($request) {
 		return $this->backlog->create($request);
@@ -39,6 +43,10 @@ class BacklogService {
 	public function delete($id) {
       return $this->backlog->delete($id);
 	}
+
+	public function checkTasksFromSprint($request) {
+		return $this->backlog->checkTasksFromSprint($request);
+}
 
 	public function checkBacklog($name) {
 		return $this->backlog->checkBacklog($name);

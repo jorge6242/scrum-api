@@ -15,6 +15,10 @@ class SprintService {
 		return $this->sprint->all();
 	}
 
+	public function getSprintsProject($project) {
+		return $this->sprint->getSprintsProject($project);
+	}
+
 	public function create($request) {
 		return $this->sprint->create($request);
 	}

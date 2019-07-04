@@ -43,6 +43,14 @@ class UserRepository  {
       return $arrayUsers;
     }
 
+    public function checkUserTeam($team,$user) {
+      $userTeam = $this->teamUser->where('user_id',$user)->get();
+      if(count($userTeam) > 0){
+        return true;
+      }
+      return false;
+    }
+
     public function delete($id) {
      return $this->user->find($id)->delete();
     }

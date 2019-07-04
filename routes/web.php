@@ -25,9 +25,13 @@ Route::prefix('api')->group(function () {
         Route::post('/users-team', 'TeamController@createUserTeam');
         Route::resource('/user', 'UserController');
         Route::get('/users-available', 'UserController@availableToTeam');
+        Route::get('/check-users-team', 'UserController@checkUserTeam');
         Route::resource('/backlog', 'BacklogController');
         Route::get('/main-backlog', 'BacklogController@getMainBacklog');
+        Route::get('/check-tasks', 'BacklogController@checkTasksFromSprint');
         Route::get('/get-backlogs-sprint/{id}', 'BacklogController@getBacklogsSprint');
+        Route::get('/get-backlogs-from-sprint/{id}', 'BacklogController@getBacklogsFromSprint');
         Route::resource('/sprint', 'SprintController');
+        Route::get('/get-sprints-project/{id}', 'SprintController@getSprintsProject');
     });
 });

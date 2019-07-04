@@ -39,7 +39,6 @@ class BacklogController extends Controller
         ]);
     }
 
-
     /**
      * Display a listing of the resource.
      *
@@ -48,6 +47,34 @@ class BacklogController extends Controller
     public function getBacklogsSprint($project)
     {
         $backlog = $this->backlogService->getBacklogsSprint($project);
+        return response()->json([
+            'success' => true,
+            'data' => $backlog
+        ]);
+    }
+
+        /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getBacklogsFromSprint($sprint)
+    {
+        $backlog = $this->backlogService->getBacklogsFromSprint($sprint);
+        return response()->json([
+            'success' => true,
+            'data' => $backlog
+        ]);
+    }
+
+        /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function checkTasksFromSprint(Request $request)
+    {
+        $backlog = $this->backlogService->checkTasksFromSprint($request);
         return response()->json([
             'success' => true,
             'data' => $backlog
@@ -80,7 +107,13 @@ class BacklogController extends Controller
      */
     public function show($id)
     {
-        //
+        $backlog = $this->backlogService->read($id);
+        if($backlog) {
+            return response()->json([
+                'success' => true,
+                'data' => $backlog
+            ]);
+        }
     }
 
     /**
@@ -103,7 +136,14 @@ class BacklogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $backlogRequest = $request->all();
+        $backlog = $this->backlogService->update($backlogRequest, $id);
+        if($backlog) {
+            return response()->json([
+                'success' => true,
+                'data' => $backlog
+            ]);
+        }
     }
 
     /**

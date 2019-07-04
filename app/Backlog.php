@@ -29,7 +29,7 @@ class Backlog extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function projects()
+    public function project()
     {
         return $this->belongsTo('App\Project', 'project_id', 'id');
     }
@@ -37,7 +37,7 @@ class Backlog extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function sprints()
+    public function sprint()
     {
         return $this->belongsTo('App\Sprint', 'sprint_id', 'id');
     }

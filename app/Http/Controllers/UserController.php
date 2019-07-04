@@ -39,6 +39,20 @@ class UserController extends Controller
         ]);
     }
 
+            /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function checkUserTeam($team, $user)
+    {
+        $user = $this->userService->checkUserTeam($team, $user);
+        return response()->json([
+            'success' => true,
+            'data' => $user
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

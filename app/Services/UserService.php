@@ -15,8 +15,12 @@ class UserService {
 			return $this->user->all();
 		}
 
-		public function availableToTeam() {
-			return $this->user->availableToTeam();
+		public function availableToTeam($team, $user) {
+			return $this->user->availableToTeam($team, $user);
+		}
+
+		public function checkUserTeam() {
+			return $this->user->checkUserTeam();
 		}
 
 		public function create($request) {
