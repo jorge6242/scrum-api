@@ -50,6 +50,17 @@ class BacklogRepository  {
       return $backlogs;
     }
 
+    public function getBoardFromSprint($sprint) {
+      $backlogs = $this->backlog->where('sprint_id',$sprint)->where('type', 1)->with(['sprint'])->get();
+      foreach ($backlogs as $key => $backlog) {
+        $tasks = $this->backlog->where('type',2)->where('assoc_backlog',$backlog['id'])->where('sprint_id',$sprint)->get();
+        if ($tasks) {
+          $backlogs[$key]->tasks = $tasks;
+        }
+      }
+      return $backlogs;
+    }
+
     public function delete($id) {
      return $this->backlog->find($id)->delete();
     }

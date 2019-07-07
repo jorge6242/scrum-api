@@ -27,6 +27,10 @@ class BacklogService {
 		return $this->backlog->getBacklogsFromSprint($sprint);
 	}
 
+	public function getBoardFromSprint($sprint) {
+		return $this->backlog->getBoardFromSprint($sprint);
+	}
+
 
 	public function create($request) {
 		return $this->backlog->create($request);

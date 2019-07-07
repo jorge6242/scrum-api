@@ -25,6 +25,20 @@ class ProjectController extends Controller
         ]);
     }
 
+        /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getAvaliableProjects()
+    {
+        $project = $this->projectService->getAvaliableProjects();
+        return response()->json([
+            'success' => true,
+            'data' => $project
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

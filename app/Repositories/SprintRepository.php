@@ -32,6 +32,10 @@ class SprintRepository  {
       return $this->sprint->where('project_id', $project)->get();
     }
 
+    public function getSprintsFromProject($project) {
+      return $this->sprint->where('project_id', $project)->where('status', 3)->get();
+    }
+
     public function delete($id) {
      return $this->sprint->find($id)->delete();
     }

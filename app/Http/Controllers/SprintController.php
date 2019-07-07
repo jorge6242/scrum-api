@@ -82,6 +82,23 @@ class SprintController extends Controller
         }
     }
 
+            /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function getSprintsFromProject($project)
+    {
+        $sprint = $this->sprintService->getSprintsFromProject($project);
+        if($sprint) {
+            return response()->json([
+                'success' => true,
+                'data' => $sprint
+            ]);
+        }
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

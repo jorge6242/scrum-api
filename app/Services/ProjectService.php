@@ -15,6 +15,11 @@ class ProjectService {
 		return $this->project->all();
 	}
 
+	public function getAvaliableProjects() {
+		return $this->project->getAvaliableProjects();
+	}
+
+
 	public function create($request) {
 		return $this->project->create($request);
 	}

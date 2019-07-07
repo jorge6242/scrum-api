@@ -21,6 +21,7 @@ Route::prefix('api')->group(function () {
         Route::delete('/product/{id}', 'ProductController@destroy');
         Route::post('/product', 'ProductController@store');
         Route::resource('/project', 'ProjectController');
+        Route::get('/get-available-projects', 'ProjectController@getAvaliableProjects');
         Route::resource('/team', 'TeamController');
         Route::post('/users-team', 'TeamController@createUserTeam');
         Route::resource('/user', 'UserController');
@@ -31,7 +32,9 @@ Route::prefix('api')->group(function () {
         Route::get('/check-tasks', 'BacklogController@checkTasksFromSprint');
         Route::get('/get-backlogs-sprint/{id}', 'BacklogController@getBacklogsSprint');
         Route::get('/get-backlogs-from-sprint/{id}', 'BacklogController@getBacklogsFromSprint');
+        Route::get('/get-board-from-sprint/{id}', 'BacklogController@getBoardFromSprint');
         Route::resource('/sprint', 'SprintController');
         Route::get('/get-sprints-project/{id}', 'SprintController@getSprintsProject');
+        Route::get('/get-sprints-from-project/{id}', 'SprintController@getSprintsFromProject');
     });
 });
