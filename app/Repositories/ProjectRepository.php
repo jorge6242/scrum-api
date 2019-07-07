@@ -32,12 +32,12 @@ class ProjectRepository  {
 
       
     public function getAvaliableProjects() {
-      $sprints = $this->sprint->all();
       $projects = $this->project->all();
       $arrayProject = array();
       foreach ($projects as $key => $project) {
+        $sprints = $this->sprint->where('project_id', $project['id'])->get();
         $counter = $this->sprint->where('status', '3')->where('project_id', $project['id'])->get();
-        $count = count($sprints) - 1;
+        $count = count($sprints) === 1 ? count($sprints) : count($sprints) - 1;;
         if($count !== count($counter)) {
           array_push($arrayProject, $this->project->where('id', $project['id'])->first());
         }
