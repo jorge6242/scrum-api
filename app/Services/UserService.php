@@ -15,6 +15,10 @@ class UserService {
 			return $this->user->all();
 		}
 
+		public function getUserProfile() {
+			return $this->user->getUserProfile();
+		}
+
 		public function availableToTeam($team, $user) {
 			return $this->user->availableToTeam($team, $user);
 		}

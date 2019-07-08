@@ -30,6 +30,20 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function getUserProfile()
+    {
+        $user = $this->userService->getUserProfile();
+        return response()->json([
+            'success' => true,
+            'data' => $user
+        ]);
+    }
+
+        /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function availableToTeam()
     {
         $user = $this->userService->availableToTeam();

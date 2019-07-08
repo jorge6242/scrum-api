@@ -30,6 +30,10 @@ class UserRepository  {
     public function all() {
       return $this->user->all();
     }
+
+    public function getUserProfile() {
+      return $this->user->where('id', auth()->user()->id)->with(['role'])->first();
+    }
   
     public function availableToTeam() {
       $arrayUsers = array();

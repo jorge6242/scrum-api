@@ -1,6 +1,7 @@
 <?php
 
 use App\User;
+use App\UserRole;
 use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder
@@ -22,30 +23,33 @@ class UsersTableSeeder extends Seeder
                 'picture' => 'Picture test',
                 'picture' => 'Picture test',
                 'password' => bcrypt(123456),
+                'role_id' => 1,
             ],
             [ 
                 'name' => 'User Test 1',
-                'email' => 'user1@test.com',
+                'email' => 'dev@test.com',
                 'lastname' => 'Last Name Test',
                 'phone' => '123456',
                 'company' => 'Company test 1',
                 'picture' => 'Picture test 1',
                 'picture' => 'Picture test 1',
                 'password' => bcrypt(123456),
+                'role_id' => 2,
             ],
             [ 
                 'name' => 'User Test 2',
-                'email' => 'user2@test.com',
+                'email' => 'qa@test.com',
                 'lastname' => 'Last Name Test',
                 'phone' => '123456',
                 'company' => 'Company test 2',
                 'picture' => 'Picture test 2',
                 'picture' => 'Picture test 2',
                 'password' => bcrypt(123456),
+                'role_id' => 3,
             ],
         ];
         foreach ($users as $user) {
-            User::create([
+           $createUser = User::create([
                 'name' => $user['name'],
                 'email' => $user['email'],
                 'lastname' => $user['lastname'],
@@ -53,6 +57,7 @@ class UsersTableSeeder extends Seeder
                 'company' => $user['company'],
                 'picture' => $user['picture'],
                 'password' => $user['password'],
+                'role_id' => $user['role_id'],
             ]);
         }
     }
